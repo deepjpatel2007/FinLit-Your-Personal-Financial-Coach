@@ -1,0 +1,12 @@
+# Logs and build artifacts
+node_modules
+.env
+dist
+dist-ssr
+*.local
+*.log
+
+# Editor files
+.vscode
+.idea
+.DS_Store
