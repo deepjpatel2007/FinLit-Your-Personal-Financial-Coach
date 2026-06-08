@@ -211,6 +211,38 @@ button, input, select, textarea {
   border: var(--border-width) solid var(--primary);
 }
 
+/* Sidebar Layout Containers */
+.app-layout-container {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  width: 100%;
+}
+
+.app-main-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .app-main-content-wrapper.expanded {
+    padding-left: 260px; /* Match expanded sidebar */
+  }
+  .app-main-content-wrapper.collapsed {
+    padding-left: 72px; /* Match collapsed sidebar */
+  }
+}
+
+@media (max-width: 768px) {
+  .app-main-content-wrapper {
+    padding-left: 0 !important;
+  }
+}
+
 /* Header / Navbar */
 .navbar {
   position: sticky;

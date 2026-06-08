@@ -13,6 +13,7 @@ export default function Dashboard({
   challenges = {},
   onToggleChallenge,
   onNavigate,
+  onStartQuiz,
   notifications = []
 }) {
   const healthScore = calculateHealthScore({
@@ -72,8 +73,15 @@ export default function Dashboard({
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginTop: '4px' }}>
             Welcome back, {profile?.name ? `Master ${profile.name}` : 'Finlit Scholar'}!
           </h2>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', marginTop: '4px' }}>
-            Your Money Profile: <strong>{profile?.name || 'Money Newbie'}</strong>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <span>Your Money Profile: <strong>{profile?.name || 'Money Newbie'}</strong></span>
+            <button 
+              className="btn btn-secondary btn-sm" 
+              style={{ padding: '2px 8px', fontSize: '0.7rem', height: '22px' }}
+              onClick={onStartQuiz}
+            >
+              🔄 Retake Quiz
+            </button>
           </p>
         </div>
 

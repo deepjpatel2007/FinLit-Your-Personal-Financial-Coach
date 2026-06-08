@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import LessonPage from './pages/LessonPage';
@@ -26,6 +27,10 @@ export default function App() {
   const [theme, setTheme] = useState(storage.getTheme());
   const [showQuiz, setShowQuiz] = useState(false);
   const [activeTab, setActiveTab] = useState(storage.getMoneyProfile() ? 'dashboard' : 'learn');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
+    storage.getMoneyProfile() ? (localStorage.getItem('sidebar-collapsed') === 'true') : false
+  );
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Daily tracker collections
   const [goals, setGoals] = useState([]);
@@ -247,54 +252,80 @@ export default function App() {
         profile={profile}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        onToggleSidebar={() => {
+          if (window.innerWidth <= 768) {
+            setIsSidebarOpen(!isSidebarOpen);
+          } else {
+            const nextState = !isSidebarCollapsed;
+            setIsSidebarCollapsed(nextState);
+            localStorage.setItem('sidebar-collapsed', String(nextState));
+          }
+        }}
       />
 
-      {/* Main Pages Content area */}
-      <main style={{ flexGrow: 1 }}>
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <Home 
-                xp={xp} 
-                streak={streak} 
-                setXp={setXp}
-                onAwardXp={handleAwardXp}
-                onStartQuiz={() => setShowQuiz(true)}
-                profile={profile}
-                setProfile={setProfile}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                goals={goals}
-                transactions={transactions}
-                unlockedBadges={unlockedBadges}
-                weeklyChallenges={weeklyChallenges}
-                onToggleChallenge={handleToggleManualChallenge}
-                onActionTriggered={handleActionTrigger}
+      {/* Main Content Layout Wrapper */}
+      <div className="app-layout-container" style={{ display: 'flex', flexGrow: 1, position: 'relative' }}>
+        <Sidebar 
+          profile={profile}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          isCollapsed={isSidebarCollapsed}
+          setIsCollapsed={setIsSidebarCollapsed}
+          isOpen={isSidebarOpen}
+          setIsOpen={setIsSidebarOpen}
+        />
+
+        <div className={`app-main-content-wrapper ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
+          <main style={{ flexGrow: 1 }}>
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  <Home 
+                    xp={xp} 
+                    streak={streak} 
+                    setXp={setXp}
+                    onAwardXp={handleAwardXp}
+                    onStartQuiz={() => setShowQuiz(true)}
+                    profile={profile}
+                    setProfile={setProfile}
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    goals={goals}
+                    transactions={transactions}
+                    unlockedBadges={unlockedBadges}
+                    weeklyChallenges={weeklyChallenges}
+                    onToggleChallenge={handleToggleManualChallenge}
+                    onActionTriggered={handleActionTrigger}
+                  />
+                } 
               />
-            } 
-          />
-          <Route 
-            path="/lesson/:moduleId" 
-            element={
-              <LessonPage 
-                onAwardXp={handleAwardXp} 
-                onLessonComplete={() => handleActionTrigger('complete_lesson')}
+              <Route 
+                path="/lesson/:moduleId" 
+                element={
+                  <LessonPage 
+                    onAwardXp={handleAwardXp} 
+                    onLessonComplete={() => handleActionTrigger('complete_lesson')}
+                  />
+                } 
               />
-            } 
-          />
-          <Route 
-            path="/about" 
-            element={
-              <About />
-            } 
-          />
-        </Routes>
-      </main>
+              <Route 
+                path="/about" 
+                element={
+                  <About />
+                } 
+              />
+            </Routes>
+          </main>
+
+          {/* Footer Branding */}
+          <Footer />
+        </div>
+      </div>
 
       {/* In-app Toast notifications for unlocks */}
       {badgeToast && (
-        <div className="badge-toast-notification">
+        <div className="badge-toast-notification" style={{ zIndex: 9999 }}>
           <span style={{ fontSize: '2rem' }}>{badgeToast.icon}</span>
           <div>
             <div style={{ fontSize: '0.65rem', color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase' }}>NEW BADGE UNLOCKED!</div>
@@ -352,9 +383,6 @@ export default function App() {
           onQuizComplete={handleQuizComplete}
         />
       )}
-
-      {/* Footer Branding */}
-      <Footer />
     </div>
   );
 }

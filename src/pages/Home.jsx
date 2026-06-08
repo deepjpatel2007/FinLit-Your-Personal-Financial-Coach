@@ -232,6 +232,7 @@ export default function Home({
             challenges={weeklyChallenges}
             onToggleChallenge={onToggleChallenge}
             onNavigate={setActiveTab}
+            onStartQuiz={onStartQuiz}
             notifications={getDynamicReminders()}
           />
         );
@@ -337,16 +338,30 @@ export default function Home({
             <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1.2fr', gap: '16px' }} className="grid-4">
               
               {/* Level progress */}
-              <div className="card">
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-sub)', fontWeight: 600 }}>XP LEVEL & RANK</span>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, marginTop: '4px', color: 'var(--primary)' }}>Lv. {levelInfo.name}</div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginTop: '12px', marginBottom: '4px' }}>
-                  <span>{xp} XP</span>
-                  <span style={{ color: 'var(--text-muted)' }}>{levelInfo.xpRemaining > 0 ? `${levelInfo.xpRemaining} XP to next rank` : 'Max Rank'}</span>
+              <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-sub)', fontWeight: 600 }}>XP LEVEL & RANK</span>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 800, marginTop: '4px', color: 'var(--primary)' }}>Lv. {levelInfo.name}</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginTop: '12px', marginBottom: '4px' }}>
+                    <span>{xp} XP</span>
+                    <span style={{ color: 'var(--text-muted)' }}>{levelInfo.xpRemaining > 0 ? `${levelInfo.xpRemaining} XP to next rank` : 'Max Rank'}</span>
+                  </div>
+                  <div className="progress-bar-container" style={{ height: '6px' }}>
+                    <div className="progress-bar-fill" style={{ width: `${levelInfo.progressPercentage}%`, backgroundColor: 'var(--primary)' }}></div>
+                  </div>
                 </div>
-                <div className="progress-bar-container" style={{ height: '6px' }}>
-                  <div className="progress-bar-fill" style={{ width: `${levelInfo.progressPercentage}%`, backgroundColor: 'var(--primary)' }}></div>
-                </div>
+                {profile && (
+                  <div style={{ marginTop: '14px', borderTop: '0.5px solid var(--border-color)', paddingTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-sub)', fontWeight: 600 }}>{profile.name}</span>
+                    <button 
+                      className="btn btn-secondary btn-sm" 
+                      onClick={onStartQuiz}
+                      style={{ padding: '2px 8px', fontSize: '0.7rem', height: '22px' }}
+                    >
+                      Retake Quiz 🔄
+                    </button>
+                  </div>
+                )}
               </div>
 
               {/* Health Score */}
@@ -418,6 +433,18 @@ export default function Home({
               <Settings size={18} /> Settings & Data Management
             </h3>
 
+            {profile && (
+              <div style={{ paddingBottom: '16px', borderBottom: '0.5px solid var(--border-color)' }}>
+                <h4 style={{ fontSize: '0.95rem', fontWeight: 600 }}>Money Profile Quiz</h4>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-sub)', marginTop: '2px', marginBottom: '10px' }}>
+                  Want to update your financial personality archetype? You can retake the onboarding quiz at any time.
+                </p>
+                <button className="btn btn-primary" onClick={onStartQuiz} style={{ fontSize: '0.85rem', padding: '8px 16px' }}>
+                  Retake Money Profile Quiz 🚀
+                </button>
+              </div>
+            )}
+
             <div>
               <h4 style={{ fontSize: '0.95rem', fontWeight: 600 }}>Export Data</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-sub)', marginTop: '2px', marginBottom: '10px' }}>
@@ -482,25 +509,32 @@ export default function Home({
           </div>
         );
 
+      case 'ai':
+        return (
+          <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div className="section-title-wrap">
+              <div>
+                <h2>Ask Finlit AI Coach</h2>
+                <p className="section-subtitle">Get personalized answers to your financial questions based on your money personality and habits.</p>
+              </div>
+            </div>
+            <AskFinlitAI onAwardXp={onAwardXp} onActionTriggered={() => onActionTriggered('ask_ai')} />
+          </div>
+        );
+
       default:
         return null;
     }
   };
 
   return (
-    <div className="container" style={{ paddingTop: '20px', paddingBottom: '80px' }}>
+    <div className="container" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
       
       {/* Dynamic Main Body Content */}
       <div className="main-content-section" style={{ minHeight: '60vh' }}>
         {renderActiveSection()}
       </div>
 
-      {/* AI Coach Floating/Bottom Row: Show only if profile is complete and tab is not active coach tab or settings, or render globally at bottom of pages */}
-      {profile && activeTab !== 'settings' && (
-        <div style={{ marginTop: '40px', borderTop: '0.5px solid var(--border-color)', paddingTop: '40px' }}>
-          <AskFinlitAI onAwardXp={onAwardXp} onActionTriggered={() => onActionTriggered('ask_ai')} />
-        </div>
-      )}
     </div>
   );
 }
