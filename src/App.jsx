@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import LessonPage from './pages/LessonPage';
+import About from './pages/About';
 import Quiz from './components/Quiz';
 import { storage } from './utils/storage';
 import { checkBadges } from './utils/badges';
@@ -280,6 +281,12 @@ export default function App() {
                 onAwardXp={handleAwardXp} 
                 onLessonComplete={() => handleActionTrigger('complete_lesson')}
               />
+            } 
+          />
+          <Route 
+            path="/about" 
+            element={
+              <About />
             } 
           />
         </Routes>

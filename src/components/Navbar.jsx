@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Leaf, Flame, Award, Sun, Moon, Menu, X } from 'lucide-react';
 
 export default function Navbar({ 
@@ -12,10 +13,20 @@ export default function Navbar({
   setActiveTab 
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isAboutPage = location.pathname === '/about';
 
   const handleNavClick = (tabId) => {
     setIsOpen(false);
     setActiveTab(tabId);
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleAboutClick = () => {
+    setIsOpen(false);
+    navigate('/about');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -24,7 +35,7 @@ export default function Navbar({
       <div className="container nav-container">
         {/* Logo */}
         <button 
-          onClick={() => handleNavClick(profile ? 'dashboard' : 'dashboard')} 
+          onClick={() => handleNavClick('dashboard')} 
           className="logo"
           style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
         >
@@ -41,7 +52,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('dashboard')} 
-                  className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'dashboard' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Dashboard
@@ -50,7 +61,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('learn')} 
-                  className={`nav-link ${activeTab === 'learn' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'learn' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Learn
@@ -59,7 +70,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('tools')} 
-                  className={`nav-link ${activeTab === 'tools' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'tools' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Tools
@@ -68,7 +79,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('spending')} 
-                  className={`nav-link ${activeTab === 'spending' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'spending' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Spending
@@ -77,7 +88,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('goals')} 
-                  className={`nav-link ${activeTab === 'goals' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'goals' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Goals
@@ -86,10 +97,19 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('progress')} 
-                  className={`nav-link ${activeTab === 'progress' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'progress' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Progress
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={handleAboutClick} 
+                  className={`nav-link ${isAboutPage ? 'active' : ''}`}
+                  style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
+                >
+                  About
                 </button>
               </li>
             </>
@@ -98,7 +118,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('learn')} 
-                  className={`nav-link ${activeTab === 'learn' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'learn' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Learn
@@ -107,7 +127,7 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('tools')} 
-                  className={`nav-link ${activeTab === 'tools' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'tools' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   Tools
@@ -116,10 +136,19 @@ export default function Navbar({
               <li>
                 <button 
                   onClick={() => handleNavClick('progress')} 
-                  className={`nav-link ${activeTab === 'progress' ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === 'progress' && !isAboutPage ? 'active' : ''}`}
                   style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
                 >
                   My Progress
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={handleAboutClick} 
+                  className={`nav-link ${isAboutPage ? 'active' : ''}`}
+                  style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 500 }}
+                >
+                  About
                 </button>
               </li>
             </>
@@ -181,38 +210,44 @@ export default function Navbar({
       <div className={`mobile-menu ${isOpen ? 'open' : ''}`} style={{ top: '70px', padding: '16px', borderBottom: '1px solid var(--border-color)' }}>
         {profile ? (
           <>
-            <button onClick={() => handleNavClick('dashboard')} className={`btn ${activeTab === 'dashboard' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('dashboard')} className={`btn ${activeTab === 'dashboard' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               🏠 Dashboard
             </button>
-            <button onClick={() => handleNavClick('learn')} className={`btn ${activeTab === 'learn' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('learn')} className={`btn ${activeTab === 'learn' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               📚 Learn Lessons
             </button>
-            <button onClick={() => handleNavClick('tools')} className={`btn ${activeTab === 'tools' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('tools')} className={`btn ${activeTab === 'tools' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               🛠️ Calculators
             </button>
-            <button onClick={() => handleNavClick('spending')} className={`btn ${activeTab === 'spending' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('spending')} className={`btn ${activeTab === 'spending' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               💸 Spending Tracker
             </button>
-            <button onClick={() => handleNavClick('goals')} className={`btn ${activeTab === 'goals' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('goals')} className={`btn ${activeTab === 'goals' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               🎯 Savings Goals
             </button>
-            <button onClick={() => handleNavClick('progress')} className={`btn ${activeTab === 'progress' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('progress')} className={`btn ${activeTab === 'progress' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               🏆 Achievements
             </button>
-            <button onClick={() => handleNavClick('settings')} className={`btn ${activeTab === 'settings' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
-              ⚙️ settings & Reset
+            <button onClick={handleAboutClick} className={`btn ${isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+              ℹ️ About Finlit
+            </button>
+            <button onClick={() => handleNavClick('settings')} className={`btn ${activeTab === 'settings' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+              ⚙️ Settings & Reset
             </button>
           </>
         ) : (
           <>
-            <button onClick={() => handleNavClick('learn')} className={`btn ${activeTab === 'learn' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('learn')} className={`btn ${activeTab === 'learn' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               📚 Learn
             </button>
-            <button onClick={() => handleNavClick('tools')} className={`btn ${activeTab === 'tools' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('tools')} className={`btn ${activeTab === 'tools' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               🛠️ Tools
             </button>
-            <button onClick={() => handleNavClick('progress')} className={`btn ${activeTab === 'progress' ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+            <button onClick={() => handleNavClick('progress')} className={`btn ${activeTab === 'progress' && !isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
               🏆 My Progress
+            </button>
+            <button onClick={handleAboutClick} className={`btn ${isAboutPage ? 'btn-primary' : 'btn-secondary'}`} style={{ justifyContent: 'flex-start', width: '100%' }}>
+              ℹ️ About Finlit
             </button>
           </>
         )}
