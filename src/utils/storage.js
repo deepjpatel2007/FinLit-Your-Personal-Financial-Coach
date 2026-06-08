@@ -11,6 +11,11 @@ const KEYS = {
   LAST_VISITED_DATE: 'finlit_last_visited_date',
   SCENARIO_COMPLETIONS: 'finlit_scenario_completions',
   SAVED_GOALS: 'finlit_saved_goals',
+  TRANSACTIONS: 'finlit_transactions',
+  SUBSCRIPTIONS: 'finlit_subscriptions',
+  UNLOCKED_BADGES: 'finlit_unlocked_badges',
+  WEEKLY_CHALLENGES: 'finlit_weekly_challenges',
+  LAST_CHALLENGE_RESET: 'finlit_last_challenge_reset',
   THEME: 'finlit_theme' // 'light' or 'dark'
 };
 
@@ -67,6 +72,25 @@ export const storage = {
   getSavedGoals: () => getItem(KEYS.SAVED_GOALS, []),
   setSavedGoals: (goals) => setItem(KEYS.SAVED_GOALS, goals),
 
+  // Transactions
+  getTransactions: () => getItem(KEYS.TRANSACTIONS, []),
+  setTransactions: (transactions) => setItem(KEYS.TRANSACTIONS, transactions),
+
+  // Subscriptions
+  getSubscriptions: () => getItem(KEYS.SUBSCRIPTIONS, []),
+  setSubscriptions: (subscriptions) => setItem(KEYS.SUBSCRIPTIONS, subscriptions),
+
+  // Badges
+  getUnlockedBadges: () => getItem(KEYS.UNLOCKED_BADGES, []),
+  setUnlockedBadges: (badges) => setItem(KEYS.UNLOCKED_BADGES, badges),
+
+  // Weekly Challenges
+  getWeeklyChallenges: () => getItem(KEYS.WEEKLY_CHALLENGES, null),
+  setWeeklyChallenges: (challenges) => setItem(KEYS.WEEKLY_CHALLENGES, challenges),
+
+  getLastChallengeReset: () => getItem(KEYS.LAST_CHALLENGE_RESET, null),
+  setLastChallengeReset: (timestamp) => setItem(KEYS.LAST_CHALLENGE_RESET, timestamp),
+
   // Streak logic (Consecutive-calendar-day)
   getStreak: () => {
     return getItem(KEYS.DAILY_STREAK, 0);
@@ -109,6 +133,24 @@ export const storage = {
     return { streak: currentStreak, updated: true };
   },
 
+  // Reset specific parts of application
+  resetQuiz: () => {
+    localStorage.removeItem(KEYS.QUIZ_ANSWERS);
+    localStorage.removeItem(KEYS.MONEY_PROFILE);
+  },
+
+  resetTransactions: () => {
+    localStorage.removeItem(KEYS.TRANSACTIONS);
+  },
+
+  resetGoals: () => {
+    localStorage.removeItem(KEYS.SAVED_GOALS);
+  },
+
+  resetSubscriptions: () => {
+    localStorage.removeItem(KEYS.SUBSCRIPTIONS);
+  },
+
   // Reset all data
   resetAll: () => {
     localStorage.removeItem(KEYS.QUIZ_ANSWERS);
@@ -121,6 +163,11 @@ export const storage = {
     localStorage.removeItem(KEYS.LAST_VISITED_DATE);
     localStorage.removeItem(KEYS.SCENARIO_COMPLETIONS);
     localStorage.removeItem(KEYS.SAVED_GOALS);
+    localStorage.removeItem(KEYS.TRANSACTIONS);
+    localStorage.removeItem(KEYS.SUBSCRIPTIONS);
+    localStorage.removeItem(KEYS.UNLOCKED_BADGES);
+    localStorage.removeItem(KEYS.WEEKLY_CHALLENGES);
+    localStorage.removeItem(KEYS.LAST_CHALLENGE_RESET);
     // keep theme
   }
 };

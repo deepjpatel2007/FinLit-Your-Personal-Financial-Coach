@@ -5,7 +5,7 @@ import { storage } from '../utils/storage';
 import { ArrowLeft, BookOpen, Award, CheckCircle2, ChevronRight, XCircle } from 'lucide-react';
 import * as Icons from 'lucide-react';
 
-export default function LessonPage({ onAwardXp }) {
+export default function LessonPage({ onAwardXp, onLessonComplete }) {
   const { moduleId } = useParams();
   const navigate = useNavigate();
 
@@ -73,8 +73,10 @@ export default function LessonPage({ onAwardXp }) {
         const currentXp = storage.getXP();
         storage.setXP(currentXp + 100);
         onAwardXp(100);
+        if (onLessonComplete) onLessonComplete();
         setShowXPModal(true);
       } else {
+        if (onLessonComplete) onLessonComplete();
         setShowXPModal(true);
       }
     }

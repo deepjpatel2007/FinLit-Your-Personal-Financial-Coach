@@ -1227,3 +1227,132 @@ button, input, select, textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* ----------------------------------------------------
+   Upgrade Upgrades (Mobile Bottom Nav, Badges, Tabs)
+---------------------------------------------------- */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-card);
+  border-top: var(--border-width) solid var(--border-color);
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  height: 64px;
+  z-index: 1000;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0 10px;
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-sub);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 500;
+  gap: 3px;
+  flex-grow: 1;
+  height: 100%;
+  transition: color 0.15s ease;
+}
+
+.mobile-bottom-nav-item.active {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+  body {
+    padding-bottom: 74px; /* Space for bottom nav */
+  }
+}
+
+/* Badge list grid */
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.badge-item {
+  background-color: var(--bg-input);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.badge-item.locked {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.badge-item.locked::after {
+  content: "🔒";
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.75rem;
+}
+
+.badge-item-icon {
+  font-size: 1.8rem;
+}
+
+.badge-item-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.badge-item-desc {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.badge-toast-notification {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-card);
+  padding: 12px 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.tabs-header-scroll::-webkit-scrollbar {
+  display: none;
+}
+
