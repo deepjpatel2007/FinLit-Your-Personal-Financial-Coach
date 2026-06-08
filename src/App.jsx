@@ -27,9 +27,6 @@ export default function App() {
   const [theme, setTheme] = useState(storage.getTheme());
   const [showQuiz, setShowQuiz] = useState(false);
   const [activeTab, setActiveTab] = useState(storage.getMoneyProfile() ? 'dashboard' : 'learn');
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
-    storage.getMoneyProfile() ? (localStorage.getItem('sidebar-collapsed') === 'true') : false
-  );
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Daily tracker collections
@@ -252,15 +249,7 @@ export default function App() {
         profile={profile}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        onToggleSidebar={() => {
-          if (window.innerWidth <= 768) {
-            setIsSidebarOpen(!isSidebarOpen);
-          } else {
-            const nextState = !isSidebarCollapsed;
-            setIsSidebarCollapsed(nextState);
-            localStorage.setItem('sidebar-collapsed', String(nextState));
-          }
-        }}
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
       />
 
       {/* Main Content Layout Wrapper */}
@@ -269,13 +258,11 @@ export default function App() {
           profile={profile}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          isCollapsed={isSidebarCollapsed}
-          setIsCollapsed={setIsSidebarCollapsed}
           isOpen={isSidebarOpen}
           setIsOpen={setIsSidebarOpen}
         />
 
-        <div className={`app-main-content-wrapper ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
+        <div className="app-main-content-wrapper">
           <main style={{ flexGrow: 1 }}>
             <Routes>
               <Route 

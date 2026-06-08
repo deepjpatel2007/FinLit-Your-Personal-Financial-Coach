@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -10,8 +10,7 @@ import {
   Sparkles, 
   Info, 
   Settings, 
-  ChevronLeft, 
-  ChevronRight,
+  X,
   Leaf
 } from 'lucide-react';
 import './Sidebar.css';
@@ -20,8 +19,6 @@ export default function Sidebar({
   profile,
   activeTab,
   setActiveTab,
-  isCollapsed,
-  setIsCollapsed,
   isOpen,
   setIsOpen
 }) {
@@ -50,8 +47,19 @@ export default function Sidebar({
     { id: 'about', label: 'About Finlit', icon: Info, desc: 'Mission, features, and vision' }
   ];
 
+  // Handle closing drawer with Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, setIsOpen]);
+
   const handleItemClick = (item) => {
-    setIsOpen(false); // Close mobile menu drawer if open
+    setIsOpen(false); // Close sidebar drawer when item is clicked
     
     if (item.id === 'about') {
       navigate('/about');
@@ -63,12 +71,6 @@ export default function Sidebar({
     }
   };
 
-  const handleToggleCollapse = () => {
-    const nextState = !isCollapsed;
-    setIsCollapsed(nextState);
-    localStorage.setItem('sidebar-collapsed', String(nextState));
-  };
-
   // Determine if a menu item is active
   const isItemActive = (itemId) => {
     if (itemId === 'about') return isAboutPage;
@@ -77,7 +79,7 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Mobile Backdrop Overlay - visible when mobile drawer is open */}
+      {/* Mobile & Desktop Backdrop Overlay - visible when drawer is open */}
       {isOpen && (
         <div 
           className="sidebar-mobile-overlay" 
@@ -85,15 +87,37 @@ export default function Sidebar({
         />
       )}
 
-      {/* Sidebar Panel Container */}
-      <aside className={`sidebar-navigation ${isCollapsed ? 'collapsed' : 'expanded'} ${isOpen ? 'mobile-open' : ''}`}>
+      {/* Sidebar Drawer Container */}
+      <aside className={`sidebar-navigation ${isOpen ? 'mobile-open' : ''}`}>
         
-        {/* Sidebar Header with Logo - Desktop only */}
+        {/* Sidebar Header with Logo & Close button */}
         <div className="sidebar-logo-container">
-          <div className="logo-icon">
-            <Leaf size={16} fill="#FFF" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div className="logo-icon">
+              <Leaf size={16} fill="#FFF" />
+            </div>
+            <span className="logo-text">Finlit</span>
           </div>
-          {!isCollapsed && <span className="logo-text">Finlit</span>}
+
+          <button 
+            className="sidebar-close-btn" 
+            onClick={() => setIsOpen(false)}
+            aria-label="Close sidebar"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '6px',
+              borderRadius: '6px',
+              transition: 'all 0.2s'
+            }}
+          >
+            <X size={18} />
+          </button>
         </div>
 
         {/* Navigation Items List */}
@@ -107,42 +131,19 @@ export default function Sidebar({
                 key={item.id}
                 onClick={() => handleItemClick(item)}
                 className={`sidebar-menu-item ${active ? 'active' : ''}`}
-                title={isCollapsed ? `${item.label} — ${item.desc}` : undefined}
               >
                 <div className="sidebar-menu-item-icon">
                   <Icon size={20} />
                 </div>
                 
-                {!isCollapsed && (
-                  <div className="sidebar-menu-item-content">
-                    <span className="sidebar-menu-item-label">{item.label}</span>
-                    <span className="sidebar-menu-item-desc">{item.desc}</span>
-                  </div>
-                )}
-
-                {/* Sub-description hover label for collapsed state (custom tooltip) */}
-                {isCollapsed && (
-                  <div className="sidebar-collapsed-tooltip">
-                    <div style={{ fontWeight: 600 }}>{item.label}</div>
-                    <div style={{ fontSize: '0.65rem', opacity: 0.8, whiteSpace: 'nowrap' }}>{item.desc}</div>
-                  </div>
-                )}
+                <div className="sidebar-menu-item-content">
+                  <span className="sidebar-menu-item-label">{item.label}</span>
+                  <span className="sidebar-menu-item-desc">{item.desc}</span>
+                </div>
               </button>
             );
           })}
         </nav>
-
-        {/* Sidebar Collapse Toggle Button at Bottom - Desktop only */}
-        <div className="sidebar-footer">
-          <button 
-            className="sidebar-collapse-toggle" 
-            onClick={handleToggleCollapse}
-            aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          >
-            {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
-            {!isCollapsed && <span style={{ fontSize: '0.75rem', fontWeight: 500 }}>Collapse Menu</span>}
-          </button>
-        </div>
 
       </aside>
     </>
