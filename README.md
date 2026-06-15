@@ -4,50 +4,62 @@
 
 Finlit is a financial literacy web app designed for teenagers, students, and young adults who are starting their first jobs and learning how to manage money responsibly.
 
-The app combines personalized learning, budgeting tools, spending tracking, savings goals, financial calculators, gamification, and an AI-powered money coach to make personal finance easier to understand and use in everyday life.
+The website combines personalized learning, budgeting tools, spending tracking, savings goals, financial calculators, gamification, real-life scenarios, and an AI-powered money coach into one interactive experience.
 
 **Live Demo:** https://fin-lit-your-personal-financial-coa.vercel.app/
 
 ---
 
-## About the App
+## Overview
 
-Finlit was built to help young people learn practical money skills in a simple and interactive way. Instead of presenting financial education like a textbook, the app uses dashboards, quizzes, progress tracking, simulations, and real-world examples to make learning feel more engaging.
+Finlit was created to make financial literacy easier, more practical, and more engaging for young people. Many teens and young adults start earning money before they fully understand budgeting, saving, credit cards, investing, taxes, or how their first paycheque works.
 
-The app focuses on topics that are useful for teens and young adults, including budgeting, saving, credit cards, credit scores, investing basics, student finances, taxes, and first paycheques.
+Instead of teaching money like a textbook, Finlit turns financial education into a personalized dashboard. Users can take a money profile quiz, follow recommended lessons, track goals, simulate financial decisions, earn XP, complete challenges, and ask an AI coach questions in simple language.
 
-Finlit also includes Canadian and North American financial concepts such as TFSA, RESP, RRSP, T4 forms, CPP, EI, debit cards, credit cards, and paycheque deductions.
+The website is built around a simple idea: financial literacy should feel useful, visual, and easy to understand.
 
 > **Disclaimer:** Finlit is for educational purposes only. It does not provide professional financial, investment, legal, or tax advice.
 
 ---
 
-## Features
+## Purpose
 
-- Personalized 20-question money profile quiz
-- Custom learning paths based on user goals and habits
-- Financial health score dashboard
-- XP, levels, streaks, badges, and weekly challenges
-- Interactive financial literacy lessons
-- Spending tracker for income and expenses
-- Savings goals manager with progress tracking
-- 50/30/20 budget builder
-- Compound growth calculator
-- Credit score simulator
-- First paycheque simulator
-- Subscription audit tool
-- Emergency fund calculator
-- Debt payoff planner
-- Real-life choose-your-path money scenarios
-- Ask Finlit AI financial literacy assistant
-- Dark mode support
-- Mobile-friendly responsive design
+The goal of Finlit is to help young people build better money habits early. The app focuses on realistic financial situations that teens and young adults may face, such as receiving a first paycheque, opening a bank account, saving for a car, using a credit card, tracking spending, or learning how investing works.
+
+Finlit is especially focused on Canadian and North American financial concepts, including TFSA, RESP, RRSP, T4 forms, CPP, EI, credit scores, debit cards, credit cards, student money, and paycheque deductions.
 
 ---
 
-## Learning Modules
+## Main Website Sections
 
-Finlit includes 12 financial literacy modules:
+### Dashboard
+
+The dashboard gives users a quick overview of their financial progress. It includes their money profile, financial health score, XP level, streak, spending snapshot, savings goal progress, reminders, and recommended next steps.
+
+The goal of the dashboard is to make Finlit feel like a daily-use money app instead of a one-time learning website.
+
+### Money Profile Quiz
+
+Finlit starts with a personalized onboarding quiz that asks about the user’s situation, income, goals, habits, confidence, and financial knowledge.
+
+After completing the quiz, the user receives a money profile that helps personalize the rest of the app. The profile can recommend lessons, goals, tools, and AI starter questions based on what the user needs most.
+
+Example profiles include:
+
+- Money Newbie
+- Budget Starter
+- Goal Builder
+- Credit Curious
+- Future Investor
+- Paycheque Planner
+- Smart Saver
+- Money Master in Training
+
+### Learning Modules
+
+Finlit includes interactive financial literacy modules written in plain English. The lessons avoid complicated jargon and focus on real-life examples.
+
+The modules cover:
 
 1. Budgeting Basics
 2. Saving & Emergency Funds
@@ -62,7 +74,112 @@ Finlit includes 12 financial literacy modules:
 11. Avoiding Scams
 12. Financial Independence Basics
 
-Each module includes plain-English explanations, examples, glossary terms, quiz questions, XP rewards, and progress tracking.
+Each module includes explanations, glossary terms, examples, quiz questions, progress tracking, and XP rewards.
+
+### Budgeting Tools
+
+Finlit includes tools that help users understand how to organize their money. The 50/30/20 Budget Builder shows how income can be divided into needs, wants, and savings.
+
+This helps users see how much money could go toward essentials, personal spending, and future goals.
+
+### Spending Tracker
+
+The spending tracker allows users to record income and expenses. Users can categorize transactions, view recent activity, and understand where their money is going.
+
+The purpose of this feature is to make spending visible. When users can see their habits clearly, it becomes easier to make better financial decisions.
+
+### Savings Goals
+
+The savings goals section helps users create and track financial goals. A user can enter a goal name, target amount, current savings, target date, and priority level.
+
+Finlit then shows progress, remaining amount, and suggested monthly savings. This makes goals such as saving for a car, school, emergency fund, travel, technology, or investing easier to follow.
+
+### Financial Simulators
+
+Finlit includes several interactive calculators and simulators:
+
+- **Budget Builder** — shows a 50/30/20 income breakdown
+- **Compound Growth Calculator** — shows how money can grow over time
+- **Credit Score Simulator** — explains how financial actions can affect credit
+- **First Paycheque Simulator** — estimates gross pay, deductions, and take-home pay
+- **Subscription Audit Tool** — shows how monthly subscriptions add up
+- **Emergency Fund Calculator** — helps estimate emergency savings needs
+- **Debt Payoff Planner** — compares different debt repayment approaches
+
+These tools are meant to make financial concepts easier to see and understand.
+
+### Real Talk Scenarios
+
+Finlit includes choose-your-path scenarios based on everyday money decisions. These scenarios help users practice financial decision-making in a low-risk way.
+
+Examples include:
+
+- Getting a first paycheque
+- Being offered a high-interest credit card
+- Splitting an expensive dinner
+- Deciding whether to invest
+- Choosing between wants and responsibilities
+- Tracking cash income
+
+Each scenario shows choices, consequences, and lessons learned.
+
+### Ask Finlit AI
+
+Ask Finlit AI is a financial literacy assistant designed to explain money topics in short, simple, and practical language.
+
+Users can ask questions such as:
+
+- How should I budget my first paycheque?
+- What is a credit score?
+- What is a TFSA?
+- How do credit cards work?
+- How can I save for a car?
+- What should I learn next?
+
+The AI coach is designed for educational support only and avoids giving professional financial advice.
+
+### Gamification
+
+Finlit uses game-like features to make learning more motivating. Users can earn XP, level up, build streaks, unlock badges, complete weekly challenges, and track lesson progress.
+
+This makes the website feel more interactive and encourages users to keep learning over time.
+
+---
+
+## Key Features
+
+- Personalized money profile quiz
+- Recommended learning paths
+- Financial health score dashboard
+- Interactive financial literacy lessons
+- Budget builder
+- Spending tracker
+- Savings goals manager
+- First paycheque simulator
+- Compound growth calculator
+- Credit score simulator
+- Subscription audit tool
+- Emergency fund calculator
+- Debt payoff planner
+- Real-life financial decision scenarios
+- AI-powered money coach
+- XP, levels, streaks, badges, and challenges
+- Canadian/North American financial examples
+- Dark mode support
+- Mobile-friendly design
+
+---
+
+## Target Audience
+
+Finlit is designed for:
+
+- Teenagers starting their first jobs
+- Students learning how to manage money
+- Young adults building financial confidence
+- First-time credit card users
+- Young people saving for goals
+- Anyone who wants beginner-friendly financial education
 
 ---
 
@@ -95,17 +212,18 @@ Suggested screenshots:
 - Spending Tracker
 - Savings Goals
 - Ask Finlit AI
+- About Page
 
 ---
 
 ## Future Improvements
 
 - User accounts and cloud sync
-- Firebase or Supabase database support
 - More advanced analytics dashboard
 - More financial scenarios and lessons
-- Demo video and screenshots
+- More AI personalization
 - Mobile app version
+- Demo video and screenshots
 - Accessibility improvements
 
 ---
