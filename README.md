@@ -1,153 +1,431 @@
-# Finlit 🇨🇦 - Premium Personal Finance & Financial Literacy Coach
+# Finlit 🇨🇦 — Your Personal Financial Coach
 
-Learn it. Budget it. Own it. **Finlit** is a gamified, startup-quality money management and financial literacy web application for teenagers and young adults. It functions as a personal dashboard: part educational hub, part daily spending tracker, part savings goals manager, and part personalized AI money coach.
+**Learn it. Budget it. Own it.**
 
-Designed specifically to navigate North American financial terms (TFSAs, RESPs, RRSPs, credit scores, paycheques, and tax filings) without standard academic jargon, Finlit makes money management visual, simple, and action-oriented.
+Finlit is a modern financial literacy and money management web app built for teenagers, students, and young adults navigating their first jobs, first paycheques, and first real financial decisions.
+
+It combines interactive lessons, personalized learning paths, budgeting tools, savings goals, spending tracking, financial simulators, gamification, and an AI-powered money coach into one clean daily-use dashboard.
+
+🌐 **Live Demo:** https://fin-lit-your-personal-financial-coa.vercel.app/
+
+---
+
+## ✨ Project Overview
+
+Many young people start earning money before they fully understand how to manage it. Finlit was built to make financial literacy feel practical, visual, and engaging instead of overwhelming or textbook-like.
+
+The app helps users learn how to:
+
+- Budget their income
+- Track spending
+- Save toward goals
+- Understand their first paycheque
+- Learn credit card basics
+- Build financial confidence
+- Explore investing concepts safely
+- Understand Canadian/North American financial terms like TFSA, RESP, RRSP, T4, CPP, and EI
+
+Finlit is designed to feel like a mix of:
+
+- Duolingo-style learning
+- A budgeting dashboard
+- A savings goal tracker
+- A financial simulator
+- A friendly AI money coach
 
 > [!WARNING]
-> **Educational Disclaimer**: Finlit is for financial education purposes only. The tools, simulators, and AI coach do not provide professional financial, investment, legal, or tax advice. For serious financial decisions, always consult a trusted adult or qualified professional.
+> **Educational Disclaimer:** Finlit is for financial education purposes only. It does not provide professional financial, investment, legal, or tax advice. For serious financial decisions, users should speak with a trusted adult or qualified professional.
 
 ---
 
 ## 🚀 Key Features
 
-1. **Personalized Onboarding Quiz & Archetypes**:
-   - A 20-question quiz divided into Situation, Goals, Habits, and Knowledge.
-   - Computes a personalized money archetype out of 8 potential personas (e.g. *Money Newbie*, *Future Investor*, *Paycheque Planner*, *Smart Saver*).
-   - Generates confidence metrics, risk factor analysis, recommended paths, daily habits, first goals, and coach starter prompts.
-2. **Master Control Dashboard**:
-   - Circular Financial Health Score meter out of 100.
-   - Weekly challenges checkboxes with custom XP values.
-   - Spending snapshots (monthly cash flows) and high spending warnings.
-   - Priority savings goal status and reminders.
-3. **Daily Spending Ledger**:
-   - Inflow/outflow transaction logs (date, method, category, notes).
-   - Recharts category donut chart rendering.
-   - High spending alert prompts.
-4. **Savings Goals Manager**:
-   - Advanced tracker allowing target dates, priority levels, monthly contributions, and checkoffs.
-   - Calculates days remaining and suggested monthly savings rates.
-5. **Interactive Simulators (7 calculators)**:
-   - *50/30/20 Budget Builder*: Ideal allocations slider.
-   - *What-If Growth Calculator*: Compound interest projections graph.
-   - *Credit Score Simulator*: Interactive score gauges and habit toggles.
-   - *First Paycheque Simulator*: Canadian provincial deductions calculator (ON, QC, BC, AB, etc. plus CPP/EI).
-   - *Subscription Audit*: Underutilized subscription tracker that links cancel savings to goals.
-   - *Emergency Fund Calculator*: Buffer target milestone calculator.
-   - *Debt Payoff Planner*: Avalanche vs snowball comparison simulator.
-6. **Gamified Lessons**:
-   - 12 modules covering Budgeting, Credit, Taxes, Student Money, and Scams.
-   - Case studies, glossaries, and quizzes that award XP.
-7. **Ask Finlit AI Coach**:
-   - Context-aware chatbot powered securely by Claude API (`claude-sonnet-4-20250514`) or fallback offline personalized logic.
-8. **Data settings & Export**:
-   - Export browser progress as JSON.
-   - Target resets for specific categories.
+### 🎯 Personalized Money Profile Quiz
+
+Finlit includes a detailed 20-question onboarding quiz covering the user’s current situation, income, goals, habits, confidence level, and financial knowledge.
+
+The quiz generates a personalized money profile such as:
+
+- Money Newbie
+- Budget Starter
+- Goal Builder
+- Credit Curious
+- Future Investor
+- Paycheque Planner
+- Smart Saver
+- Money Master in Training
+
+Each profile includes recommended learning paths, first goals, risk areas, daily habits, and personalized AI coach prompts.
+
+---
+
+### 📊 Daily Financial Dashboard
+
+The dashboard gives users a quick snapshot of their financial progress, including:
+
+- Money profile
+- Financial Health Score
+- XP and level
+- Daily streak
+- Priority savings goal
+- Monthly cash flow summary
+- Recent transactions
+- Recommended next lesson
+- Reminders and weekly challenges
+
+---
+
+### 📚 Interactive Learning Modules
+
+Finlit includes 12 teen-friendly learning modules written in plain English:
+
+1. Budgeting Basics
+2. Saving & Emergency Funds
+3. Credit Cards
+4. Credit Scores
+5. Banking 101
+6. First Paycheque & Taxes
+7. Investing Basics
+8. ETFs, Stocks & Risk
+9. Student Money
+10. Loans & Debt
+11. Avoiding Scams
+12. Financial Independence Basics
+
+Each module includes short lessons, real-life examples, glossary terms, quizzes, XP rewards, progress tracking, and difficulty levels.
+
+---
+
+### 💰 Budgeting & Spending Tools
+
+Finlit helps users manage money day to day with:
+
+- 50/30/20 Budget Builder
+- Spending tracker
+- Income and expense logs
+- Category breakdown charts
+- Monthly cash flow summaries
+- High-spending alerts
+- Recent transaction history
+
+---
+
+### 🎯 Savings Goals Manager
+
+Users can create and track savings goals with:
+
+- Goal name
+- Target amount
+- Current saved amount
+- Target date
+- Priority level
+- Category
+- Monthly savings recommendation
+- Progress percentage
+- Completion status
+
+Example goals include saving for a car, school, emergency fund, travel, technology, investing, or personal purchases.
+
+---
+
+### 🧮 Financial Simulators
+
+Finlit includes several interactive tools that make finance easier to understand:
+
+- **Budget Builder** — shows a live 50/30/20 income breakdown
+- **What-If Growth Calculator** — projects compound growth over time
+- **Credit Score Simulator** — shows how actions can affect credit score
+- **First Paycheque Simulator** — estimates gross pay, deductions, CPP, EI, and take-home pay
+- **Subscription Audit** — shows how recurring costs add up
+- **Emergency Fund Calculator** — builds a savings target for essentials
+- **Debt Payoff Planner** — compares payoff strategies and extra payments
+
+All calculations are educational estimates.
+
+---
+
+### 🤖 Ask Finlit AI
+
+Finlit includes an AI financial literacy coach powered through a secure Express backend proxy using Anthropic Claude.
+
+The assistant is designed to:
+
+- Explain money topics simply
+- Avoid jargon
+- Give short and practical answers
+- Use teen-friendly examples
+- Reference the user’s goals and progress when available
+- Avoid professional financial advice
+
+If no API key is configured, the app can still run with a helpful fallback mode for demo purposes.
+
+---
+
+### 🏆 Gamification System
+
+To make learning feel rewarding, Finlit includes:
+
+- XP points
+- Levels
+- Daily streaks
+- Achievement badges
+- Weekly challenges
+- Lesson completion rewards
+- Scenario rewards
+- Progress tracking
+
+Level progression includes stages such as Money Newbie, Budget Boss, Credit Champ, Invest Pro, and Money Master.
+
+---
+
+### 🧠 Real Talk Scenarios
+
+Finlit includes choose-your-own-path money scenarios based on realistic situations, such as:
+
+- Getting a first paycheque
+- Being offered a high-interest store credit card
+- Splitting an expensive dinner
+- Deciding whether to invest
+- Managing wants versus responsibilities
+- Tracking cash income
+
+Each scenario teaches consequences through interactive choices.
+
+---
+
+### 🇨🇦 Canadian Financial Context
+
+Finlit includes Canadian/North American financial topics such as:
+
+- TFSA
+- RESP
+- RRSP
+- T4 forms
+- CPP
+- EI
+- Credit scores
+- Debit and credit cards
+- Paycheque deductions
+- Student finances
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React (Functional hooks), React Router (HashRouter)
-- **Charts**: Recharts (Dynamic Responsive SVG Charts)
-- **Icons**: Lucide React
-- **Backend Proxy**: Node.js, Express, CORS, Dotenv, and `@anthropic-ai/sdk`
-- **Storage**: Browser `localStorage` (persisting XP, streak, lessons, goals, transactions)
+| Area | Technology |
+|---|---|
+| Frontend | React, Vite |
+| Routing | React Router with HashRouter |
+| Styling | Custom CSS, dark mode support |
+| Charts | Recharts |
+| Icons | Lucide React |
+| Backend Proxy | Node.js, Express |
+| AI Integration | Anthropic Claude API |
+| Environment Variables | dotenv |
+| Storage | Browser localStorage |
+| Deployment | Vercel |
+
+---
+
+## 📸 Screenshots
+
+Screenshots will be added here.
+
+Suggested screenshots:
+
+- Dashboard
+- Money Profile Quiz
+- Learning Modules
+- Budget Builder
+- Spending Tracker
+- Savings Goals
+- Ask Finlit AI
+- About Page
+
+---
+
+## 🧩 Project Structure
+
+```text
+FinLit-Your-Personal-Financial-Coach/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── tools/
+│   │   ├── AskFinlitAI.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── GoalsTracker.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── SpendingTracker.jsx
+│   │   └── Tools.jsx
+│   ├── data/
+│   │   ├── modules.js
+│   │   ├── quizQuestions.js
+│   │   ├── scenarios.js
+│   │   └── tips.js
+│   ├── pages/
+│   ├── utils/
+│   │   ├── badges.js
+│   │   ├── healthScore.js
+│   │   ├── profileLogic.js
+│   │   ├── storage.js
+│   │   └── xp.js
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── server.js
+├── vite.config.js
+├── package.json
+├── .env.example
+├── .gitignore
+└── README.md
+```
 
 ---
 
 ## 💻 Installation & Setup
 
 ### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed (Node 18+ is recommended).
 
-### 1. Install Dependencies
-Run the install command in the project root:
+Install Node.js. Node 18 or newer is recommended.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/deepjpatel2007/FinLit-Your-Personal-Financial-Coach.git
+cd FinLit-Your-Personal-Financial-Coach
+```
+
+### 2. Install dependencies
+
 ```bash
 npm install
 ```
 
-### 2. Configure Claude AI API Key
-1. Copy the `.env.example` file to create your own local `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Open `.env` and fill in your Anthropic API Key:
-   ```env
-   PORT=5000
-   ANTHROPIC_API_KEY=sk-ant-api03-xxxxxx...
-   ```
-*Security Note: Never commit your `.env` file containing actual API keys to Git. The `.gitignore` is pre-configured to block it. If running offline, the built-in local AI coach will mock personalized advice automatically.*
+### 3. Configure environment variables
 
-### 3. Run App Locally
-Start both React frontend and Express backend concurrently:
+Create a local `.env` file from the example file:
+
+```bash
+cp .env.example .env
+```
+
+Then add your Anthropic API key:
+
+```env
+PORT=5000
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+```
+
+> [!IMPORTANT]
+> Never commit your real `.env` file or API keys. The `.gitignore` file is configured to exclude `.env`.
+
+### 4. Run the development server
+
 ```bash
 npm run dev
 ```
-- Frontend will open at: [http://localhost:5173/](http://localhost:5173/)
-- Backend API will run on: [http://localhost:5000/](http://localhost:5000/)
 
-### 4. Build for Production
+The frontend runs at:
+
+```text
+http://localhost:5173/
+```
+
+The backend API proxy runs at:
+
+```text
+http://localhost:5000/
+```
+
+### 5. Build for production
+
 ```bash
 npm run build
 ```
 
----
+### 6. Preview production build
 
-## 📂 Project Structure
-
-```
-FinLit/
-├── server.js               # Express proxy backend server
-├── vite.config.js          # Client bundle configurations & API proxy
-├── public/                 # Favicon and static assets
-└── src/
-    ├── App.jsx             # State coordinator and route selector
-    ├── main.jsx            # React root bootstrap
-    ├── index.css           # Styling system & utility classes
-    ├── components/
-    │   ├── Navbar.jsx      # Top header navbar & mobile bottom nav
-    │   ├── Dashboard.jsx   # Control panel with health score, challenges
-    │   ├── SpendingTracker # Income/expense transaction ledgers
-    │   ├── GoalsTracker.jsx# Savings goal coordinator
-    │   ├── Tools.jsx       # Tabbed calculators wrapper
-    │   ├── tools/
-    │   │   ├── PaychequeSimulator.jsx
-    │   │   ├── SubscriptionAudit.jsx
-    │   │   ├── EmergencyFundCalc.jsx
-    │   │   └── DebtPayoffPlanner.jsx
-    │   └── AskFinlitAI.jsx # Claude AI Chat & offline fallback
-    ├── data/
-    │   ├── modules.js      # 12 learning curriculum modules
-    │   ├── quizQuestions.js# 20 onboarding questions
-    │   └── learningPaths.js# Module path maps
-    └── utils/
-        ├── healthScore.js  # Calculates health metric out of 100
-        ├── profileLogic.js # Money Archetypes parser
-        ├── storage.js      # LocalStorage helpers
-        └── badges.js       # Unlocks conditions for 16 achievements
+```bash
+npm run preview
 ```
 
 ---
 
-## 🗺️ Product Roadmap
+## 🔐 Security Notes
 
-- [x] Expand Onboarding Quiz to 20 Questions
-- [x] Upgrade Dashboard UI & Financial Health Score calculation
-- [x] Integrate Spending Donut & Cash Flow ledger
-- [x] Implement Canadian Paycheque & Subscription Audit tools
-- [x] Structure 16 achievement badges & weekly challenges
-- [ ] Add Multiplayer Leaderboards & Friend XP compare
-- [ ] Implement live banking API connections (mock PLAID integrations)
-- [ ] Build offline-first service worker sync
+- The Anthropic API key is never exposed directly in the frontend.
+- API requests are routed through a lightweight Express proxy server.
+- `.env` is ignored by Git.
+- `.env.example` is included only as a template.
+- User progress is stored locally in the browser through localStorage.
 
 ---
 
-## 📸 Screenshots & Previews
+## 🗺️ Roadmap
 
-*(Screenshots of the dark mode dashboard, trackers, simulators, lessons, and interactive quiz will go here)*
+Completed:
+
+- [x] Personalized 20-question onboarding quiz
+- [x] Money profile generation
+- [x] Dashboard with financial health score
+- [x] XP, levels, streaks, and badges
+- [x] Spending tracker
+- [x] Savings goals manager
+- [x] Budget builder
+- [x] Compound growth calculator
+- [x] Credit score simulator
+- [x] Paycheque simulator
+- [x] Subscription audit tool
+- [x] Emergency fund calculator
+- [x] Debt payoff planner
+- [x] AI money coach
+- [x] About page
+- [x] Dark mode support
+- [x] Vercel deployment
+
+Future improvements:
+
+- [ ] User accounts and cloud sync
+- [ ] Firebase or Supabase backend
+- [ ] Bank API integration with mock/demo data
+- [ ] More advanced analytics dashboard
+- [ ] Mobile app version
+- [ ] More real-world financial scenarios
+- [ ] More accessibility testing
+- [ ] Screenshots and demo video
 
 ---
 
-## 👥 Authors & License
-Created for financial literacy education. Distributed under MIT License.
+## 🎯 What I Learned
+
+This project helped me practice:
+
+- Building a full React single-page application
+- Creating reusable components
+- Managing state with hooks and localStorage
+- Designing a responsive dashboard UI
+- Working with charts and financial calculations
+- Building an Express API proxy
+- Integrating an AI API safely
+- Creating a gamified user experience
+- Writing educational content for a specific audience
+- Deploying a project with Vercel
+
+---
+
+## 👤 Author
+
+Built by **Deep Patel**.
+
+GitHub: [@deepjpatel2007](https://github.com/deepjpatel2007)
+
+---
+
+## 📄 License
+
+This project is intended for educational and portfolio purposes.
+
+If using or adapting this project, please keep the educational disclaimer visible.
