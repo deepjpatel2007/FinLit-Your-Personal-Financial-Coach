@@ -202,6 +202,8 @@ Finlit is designed for:
 ## Screenshots
 <img width="944" height="539" alt="image" src="https://github.com/user-attachments/assets/e4d677cd-446a-41dc-8687-78ee7cfec644" />
 <img width="943" height="539" alt="image" src="https://github.com/user-attachments/assets/00c6bb7f-5848-48e4-8e5d-220cc99d158b" />
+<img width="945" height="539" alt="image" src="https://github.com/user-attachments/assets/77f4a838-c82d-44e2-aaf3-1c7758a3dd1e" />
+
 
 
 ---
